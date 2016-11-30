@@ -70,11 +70,21 @@ public class PrimeFactorsTest {
         assertEquals(list(3,3), primes);
     }
 
-
     @Test
     public void testTen() throws Exception {
         List<Integer> primes = new PrimeFactors().generate(10);
         assertEquals(list(2,5), primes);
     }
 
+    @Test
+    public void testEleven() throws Exception {
+        List<Integer> primes = new PrimeFactors().generate(11);
+        assertEquals(list(11), primes);
+    }
+
+    @Test
+    public void testTwelve() throws Exception {
+        List<Integer> primes = new PrimeFactors().generate(12);
+        assertEquals(list(2,2,3), primes);
+    }
 }
