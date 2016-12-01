@@ -5,6 +5,12 @@ package pl.com.urbanlab.hours;
  */
 public class HumanReadableSeconds {
     public String convertSeconds(long seconds) {
-        return seconds + "s";
+        if (seconds < 60) {
+            return seconds + "s";
+        }
+        if (seconds < 3600) {
+            return seconds / 60 + "m:" + seconds % 60 + "s";
+        }
+        return seconds / 3600 + "h:" + (seconds % 3600 - seconds % 60) / 60 + "m:" + seconds % 60 + "s";
     }
 }
