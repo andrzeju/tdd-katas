@@ -29,5 +29,14 @@ public class HumanReadableParserTest {
         assertEquals(new ParsedTime(23,59,59), new HumanReadableParser().parse("23h59m59s"));
     }
 
+    @Test
+    public void zero() {
+        assertEquals(new ParsedTime(0,0,0), new HumanReadableParser().parse("0h0m0s"));
+    }
+
+    @Test
+    public void invalidValues() {
+        assert(false);
+    }
 
 }

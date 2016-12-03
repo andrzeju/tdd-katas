@@ -6,19 +6,23 @@ package pl.com.urbanlab.hours;
 public class HumanReadableParser {
     public ParsedTime parse(String timeString) {
         timeString = timeString.replaceAll(":", "").replaceAll(" ", "");
-        ParsedTime result = null;
+        int seconds;
+        int minutes = 0;
+        int hours = 0;
         if (timeString.contains("h")) {
-            int hours = Integer.parseInt(timeString.substring(0,timeString.indexOf("h")));
-            int minutes = Integer.parseInt(timeString.substring(timeString.indexOf("h") + 1, timeString.indexOf("m")));
-            int seconds = Integer.parseInt(timeString.substring(timeString.indexOf("m") + 1, timeString.indexOf("s")));
-            return new ParsedTime(hours, minutes, seconds);
+            hours = toInt(timeString.substring(0,timeString.indexOf("h")));
+            minutes = toInt(timeString.substring(timeString.indexOf("h") + 1, timeString.indexOf("m")));
+            seconds = toInt(timeString.substring(timeString.indexOf("m") + 1, timeString.indexOf("s")));
         } else if (timeString.contains("m")) {
-            int minutes = Integer.parseInt(timeString.substring(0,timeString.indexOf("m")));
-            int seconds = Integer.parseInt(timeString.substring(timeString.indexOf("m") + 1, timeString.indexOf("s")));
-            result = new ParsedTime(0,minutes, seconds);
+            minutes = toInt(timeString.substring(0,timeString.indexOf("m")));
+            seconds = toInt(timeString.substring(timeString.indexOf("m") + 1, timeString.indexOf("s")));
         } else {
-            result = new ParsedTime(0,0,Integer.parseInt(timeString.substring(0,timeString.indexOf("s"))));
+            seconds = toInt(timeString.substring(0,timeString.indexOf("s")));
         }
-        return result;
+        return new ParsedTime(hours, minutes, seconds);
+    }
+    
+    private int toInt(String text) {
+        return Integer.parseInt(text);
     }
 }
