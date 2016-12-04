@@ -34,9 +34,9 @@ public class HumanReadableParserTest {
         assertEquals(new ParsedTime(0,0,0), new HumanReadableParser().parse("0h0m0s"));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void invalidValues() {
-        assert(false);
+        new HumanReadableParser().parse("zzzzz");
     }
 
 }
