@@ -5,7 +5,7 @@ package pl.com.urbanlab.kentbeck;
  */
 public class Money {
 
-    private int amount;
+    public int amount;
     private String currency;
 
     private Money(int amount, String currency) {
@@ -25,6 +25,7 @@ public class Money {
     public String toString() {
         return "Money{" +
                 "amount=" + amount +
+                ", currency='" + currency + '\'' +
                 '}';
     }
 
@@ -35,16 +36,23 @@ public class Money {
 
         Money money = (Money) o;
 
-        return amount == money.amount;
+        if (amount != money.amount) return false;
+        return currency != null ? currency.equals(money.currency) : money.currency == null;
 
     }
 
     @Override
     public int hashCode() {
-        return amount;
+        int result = amount;
+        result = 31 * result + (currency != null ? currency.hashCode() : 0);
+        return result;
     }
 
     public static Money franc(int amount) {
         return new Money(amount, "CHF");
+    }
+
+    public Money plus(Money added) {
+        return Money.dollar(this.amount + added.amount);
     }
 }
