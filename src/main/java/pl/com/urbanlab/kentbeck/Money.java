@@ -8,7 +8,7 @@ public class Money implements Expression {
     public int amount;
     private String currency;
 
-    private Money(int amount, String currency) {
+    Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
