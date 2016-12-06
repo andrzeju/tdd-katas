@@ -3,7 +3,7 @@ package pl.com.urbanlab.kentbeck;
 /**
  * Created by andrzej on 05.12.16.
  */
-public class Money {
+public class Money implements Expression {
 
     public int amount;
     private String currency;
@@ -17,7 +17,7 @@ public class Money {
         return new Money(amount, "USD");
     }
 
-    public Money times(int multiplier) {
+    public Expression times(int multiplier) {
         return dollar(this.amount * multiplier);
     }
 
@@ -52,7 +52,7 @@ public class Money {
         return new Money(amount, "CHF");
     }
 
-    public Money plus(Money added) {
-        return Money.dollar(this.amount + added.amount);
+    public Expression plus(Money added) {
+        return new Sum(this, added);
     }
 }

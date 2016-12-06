@@ -12,9 +12,9 @@ public class MoneyTest {
     @Test
     public void testMultiplication() {
         Money fiveDollar = Money.dollar(5);
-        Money tenDollar = fiveDollar.times(2);
+        Expression tenDollar = fiveDollar.times(2);
         assertEquals(Money.dollar(10), tenDollar);
-        Money fifteenDollar = fiveDollar.times(3);
+        Expression fifteenDollar = fiveDollar.times(3);
         assertEquals(Money.dollar(15), fifteenDollar);
     }
 
@@ -35,5 +35,13 @@ public class MoneyTest {
         Money sevenDollar = Money.dollar(7);
         assertEquals(Money.dollar(15), fiveDollar.plus(tenDollar));
         assertNotEquals(Money.dollar(10), fiveDollar.plus(sevenDollar));
+    }
+
+    @Test
+    public void testSimpleAddition() {
+        Bank bank = new Bank();
+        Expression sum = new Sum(Money.dollar(5), Money.dollar(5));
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(10), reduced);
     }
 }
