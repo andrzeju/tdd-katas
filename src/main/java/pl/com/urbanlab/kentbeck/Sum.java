@@ -13,7 +13,7 @@ public class Sum implements Expression {
         this.augent = added;
     }
 
-    public Money reduce(String currency) {
+    public Money reduce(Bank bank, String currency) {
         return new Money(augent.amount + addend.amount, currency);
     }
 }
