@@ -33,7 +33,9 @@ public class MoneyTest {
         Money fiveDollar = Money.dollar(5);
         Money tenDollar = Money.dollar(10);
         Money sevenDollar = Money.dollar(7);
-        assertEquals(Money.dollar(15), fiveDollar.plus(tenDollar));
+        Sum sum = (Sum) fiveDollar.plus(tenDollar);
+        assertEquals(fiveDollar, sum.addend);
+        assertEquals(tenDollar, sum.augent);
         assertNotEquals(Money.dollar(10), fiveDollar.plus(sevenDollar));
     }
 
