@@ -6,7 +6,10 @@ package pl.com.urbanlab.kentbeck;
 public class Bank {
 
     public Money reduce(Expression exp, String currency) {
-        Sum sum = (Sum) exp;
-        return sum.reduce(currency);
+        return exp.reduce(currency);
+    }
+
+    public void addRate(String from, String to, int rate) {
+
     }
 }

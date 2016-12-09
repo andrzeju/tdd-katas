@@ -55,4 +55,9 @@ public class Money implements Expression {
     public Expression plus(Money added) {
         return new Sum(this, added);
     }
+
+    public Money reduce(String currency) {
+        int rate = currency == this.currency ? 1 : 2;
+        return Money.dollar(this.amount / rate);
+    }
 }

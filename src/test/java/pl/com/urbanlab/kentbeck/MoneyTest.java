@@ -43,7 +43,24 @@ public class MoneyTest {
     public void testSimpleAddition() {
         Bank bank = new Bank();
         Expression sum = new Sum(Money.dollar(5), Money.dollar(5));
+        Expression sum2 = new Sum(Money.dollar(7), Money.dollar(8));
         Money reduced = bank.reduce(sum, "USD");
+        Money reduced2 = bank.reduce(sum2, "USD");
         assertEquals(Money.dollar(10), reduced);
+        assertEquals(Money.dollar(15), reduced2);
+    }
+
+    @Test
+    public void testReduce() {
+        Money six = Money.dollar(6);
+        assertEquals(six, six.reduce("USD"));
+    }
+
+    @Test
+    public void testReduceDifferentCurrency() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(Money.franc(2), "USD");
+        assertEquals(Money.dollar(1), result);
     }
 }
