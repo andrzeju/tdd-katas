@@ -22,7 +22,6 @@ public class MoneyTest {
     public void testEquality() {
         Money fiveFranc = Money.franc(5);
         Money fiveDollar = Money.dollar(5);
-        assertEquals(Money.franc(5), fiveFranc);
         assertNotEquals(fiveDollar, fiveFranc);
         assertEquals(Money.dollar(5), fiveDollar);
         assertEquals(Money.franc(5), fiveFranc);
@@ -83,5 +82,16 @@ public class MoneyTest {
         bank.addRate("CHF", "USD", 2);
         Expression result = bank.reduce(dollar.plus(twoFranc), "USD");
         assertEquals(Money.dollar(2), result);
+    }
+
+    @Test
+    public void testSumPlusMoney() {
+        Expression fiveDollar = Money.dollar(5);
+        Expression tenFranc = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = fiveDollar.plus(tenFranc).plus(Money.dollar(7));
+        Expression result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(17), result);
     }
 }

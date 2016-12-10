@@ -19,7 +19,7 @@ public class Sum implements Expression {
     }
 
     public Expression plus(Expression addend) {
-        return null;
+        return new Sum(this, addend);
     }
 
     public Expression times(int multiplier) {
