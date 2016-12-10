@@ -19,7 +19,7 @@ public class WasRun {
     }
 
     public void run() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method met = this.getClass().getDeclaredMethod(this.testMethod);
-        met.invoke(this);
+        Method testMethod = this.getClass().getDeclaredMethod(this.testMethod);
+        testMethod.invoke(this);
     }
 }
