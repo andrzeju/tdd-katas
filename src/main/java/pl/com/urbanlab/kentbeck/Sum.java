@@ -5,15 +5,24 @@ package pl.com.urbanlab.kentbeck;
  */
 public class Sum implements Expression {
 
-    Money augent;
-    Money addend;
+    Expression augent;
+    Expression addend;
 
-    public Sum(Money money, Money added) {
+    public Sum(Expression money, Expression added) {
         this.addend = money;
         this.augent = added;
     }
 
     public Money reduce(Bank bank, String currency) {
-        return new Money(augent.amount + addend.amount, currency);
+        Integer newAmount = bank.reduce(augent, currency).amount + bank.reduce(addend, currency).amount;
+        return new Money(newAmount, currency);
+    }
+
+    public Expression plus(Expression addend) {
+        return null;
+    }
+
+    public Expression times(int multiplier) {
+        return null;
     }
 }
