@@ -1,4 +1,4 @@
-package pl.com.urbanlab.kentbeck;
+package pl.com.urbanlab.kentbeck.financial;
 
 import java.util.Hashtable;
 

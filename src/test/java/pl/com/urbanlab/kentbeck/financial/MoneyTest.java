@@ -1,6 +1,10 @@
-package pl.com.urbanlab.kentbeck;
+package pl.com.urbanlab.kentbeck.financial;
 
 import org.junit.Test;
+import pl.com.urbanlab.kentbeck.financial.Bank;
+import pl.com.urbanlab.kentbeck.financial.Expression;
+import pl.com.urbanlab.kentbeck.financial.Money;
+import pl.com.urbanlab.kentbeck.financial.Sum;
 
 import static org.junit.Assert.*;
 

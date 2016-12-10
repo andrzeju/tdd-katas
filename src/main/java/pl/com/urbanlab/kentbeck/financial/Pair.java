@@ -1,4 +1,4 @@
-package pl.com.urbanlab.kentbeck;
+package pl.com.urbanlab.kentbeck.financial;
 
 /**
  * Created by andrzej on 10.12.16.
