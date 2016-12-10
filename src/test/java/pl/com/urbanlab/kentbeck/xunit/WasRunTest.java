@@ -2,6 +2,8 @@ package pl.com.urbanlab.kentbeck.xunit;
 
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -10,10 +12,10 @@ import static org.junit.Assert.*;
 public class WasRunTest {
 
     @Test
-    public void testWasRun() {
-        WasRun test = new WasRun();
+    public void testWasRun() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        WasRun test = new WasRun("testMethod");
         assertFalse(test.wasRun);
-        test.testMethod();
+        test.run();
         assertTrue(test.wasRun);
     }
 }
