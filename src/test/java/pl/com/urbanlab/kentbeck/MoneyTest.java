@@ -33,8 +33,8 @@ public class MoneyTest {
         Money tenDollar = Money.dollar(10);
         Money sevenDollar = Money.dollar(7);
         Sum sum = (Sum) fiveDollar.plus(tenDollar);
-        assertEquals(fiveDollar, sum.addend);
-        assertEquals(tenDollar, sum.augent);
+        assertEquals(fiveDollar, sum.augent);
+        assertEquals(tenDollar, sum.addend);
         assertNotEquals(Money.dollar(10), fiveDollar.plus(sevenDollar));
     }
 
@@ -93,5 +93,17 @@ public class MoneyTest {
         Expression sum = fiveDollar.plus(tenFranc).plus(Money.dollar(7));
         Expression result = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(17), result);
+    }
+
+
+    @Test
+    public void testSumTimes() {
+        Expression fiveDollar = Money.dollar(5);
+        Expression tenFranc = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = fiveDollar.plus(tenFranc).times(2);
+        Expression result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), result);
     }
 }

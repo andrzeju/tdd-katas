@@ -9,8 +9,8 @@ public class Sum implements Expression {
     Expression addend;
 
     public Sum(Expression money, Expression added) {
-        this.addend = money;
-        this.augent = added;
+        this.augent = money;
+        this.addend= added;
     }
 
     public Money reduce(Bank bank, String currency) {
@@ -23,6 +23,6 @@ public class Sum implements Expression {
     }
 
     public Expression times(int multiplier) {
-        return null;
+        return new Sum(augent.times(multiplier), addend.times(multiplier));
     }
 }
