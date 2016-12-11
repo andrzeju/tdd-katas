@@ -11,6 +11,10 @@ public class WasRun extends TestCase {
         super(testMethod);
     }
 
+    public void setUp() {
+        wasSetUp = true;
+    }
+
     public void testMethod() {
         wasRun = true;
     }
