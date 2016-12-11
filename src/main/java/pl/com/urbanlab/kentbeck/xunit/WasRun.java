@@ -15,6 +15,10 @@ public class WasRun extends TestCase {
         wasSetUp = true;
     }
 
+    public void tearDown() {
+        wasTearDown = true;
+    }
+
     public void testMethod() {
         wasRun = true;
     }
