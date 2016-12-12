@@ -1,5 +1,6 @@
 package pl.com.urbanlab.kentbeck.xunit;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,6 +44,7 @@ public class TestCaseTest extends TestCase {
         assertTrue(test.wasTearDown);
     }
 
+    @After
     public void tearDown() {
     }
 }

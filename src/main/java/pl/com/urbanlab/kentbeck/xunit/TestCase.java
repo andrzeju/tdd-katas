@@ -21,8 +21,11 @@ public abstract class TestCase {
 
     public void run() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         setUp();
-        Method testMethod = this.getClass().getDeclaredMethod(this.testMethod);
-        testMethod.invoke(this);
-        tearDown();
+        try {
+            Method testMethod = this.getClass().getDeclaredMethod(this.testMethod);
+            testMethod.invoke(this);
+        } finally {
+            tearDown();
+        }
     }
 }
