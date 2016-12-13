@@ -5,7 +5,6 @@ package pl.com.urbanlab.kentbeck.xunit;
  */
 public class WasRun extends TestCase {
 
-    public boolean wasRun;
     public String log = "";
 
     public WasRun(String testMethod) {
@@ -14,17 +13,14 @@ public class WasRun extends TestCase {
 
     public void setUp() {
         log += "setUp ";
-        wasSetUp = true;
     }
 
     public void tearDown() {
         log += "tearDown";
-        wasTearDown = true;
     }
 
     public void testMethod() {
         log += "testMethod ";
-        wasRun = true;
     }
 
 }

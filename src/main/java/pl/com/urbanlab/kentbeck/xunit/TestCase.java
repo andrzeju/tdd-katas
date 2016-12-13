@@ -8,8 +8,6 @@ import java.lang.reflect.Method;
  */
 public abstract class TestCase {
     protected String testMethod;
-    public boolean wasSetUp;
-    public boolean wasTearDown;
 
     public TestCase() {}
     public TestCase(String testMethod) {
