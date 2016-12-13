@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
  */
 public class TestCaseTest extends TestCase {
 
+    public double log;
     private WasRun test;
 
     @Before
@@ -42,6 +43,14 @@ public class TestCaseTest extends TestCase {
         assertFalse(test.wasTearDown);
         test.run();
         assertTrue(test.wasTearDown);
+    }
+
+    @Test
+    public void testProperInvocationOrder() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        WasRun test = new WasRun("testMethod");
+        assertEquals("", test.log);
+        test.run();
+        assertEquals("setUp testMethod tearDown", test.log);
     }
 
     @After
