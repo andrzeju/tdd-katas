@@ -17,13 +17,17 @@ public abstract class TestCase {
     public abstract void setUp();
     public abstract void tearDown();
 
-    public void run() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public TestResult run() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         setUp();
+        TestResult result = new TestResult();
         try {
             Method testMethod = this.getClass().getDeclaredMethod(this.testMethod);
             testMethod.invoke(this);
+        } catch (Exception e) {
+            result.popFailed();
         } finally {
             tearDown();
         }
+        return result;
     }
 }
