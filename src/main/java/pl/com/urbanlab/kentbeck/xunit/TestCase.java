@@ -18,9 +18,9 @@ public abstract class TestCase {
     public abstract void tearDown();
 
     public TestResult run() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        setUp();
         TestResult result = new TestResult();
         try {
+            setUp();
             Method testMethod = this.getClass().getDeclaredMethod(this.testMethod);
             testMethod.invoke(this);
         } catch (Exception e) {
