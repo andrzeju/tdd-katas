@@ -9,7 +9,7 @@ public class TestResult {
     private int failed;
 
     public TestResult() {
-        run = 1;
+        run = 0;
         failed = 0;
     }
 
@@ -19,5 +19,9 @@ public class TestResult {
 
     public void popFailed() {
         failed++;
+    }
+
+    public void popRun() {
+        run++;
     }
 }

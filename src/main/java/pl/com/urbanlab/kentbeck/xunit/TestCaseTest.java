@@ -3,11 +3,11 @@ package pl.com.urbanlab.kentbeck.xunit;
 /**
  * Created by andrzej on 10.12.16.
  */
-public class WasRun extends TestCase {
+public class TestCaseTest extends TestCase {
 
     public String log = "";
 
-    public WasRun(String testMethod) {
+    public TestCaseTest(String testMethod) {
         super(testMethod);
     }
 
