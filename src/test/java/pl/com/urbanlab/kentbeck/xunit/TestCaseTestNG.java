@@ -13,18 +13,19 @@ import static org.junit.Assert.*;
  */
 public class TestCaseTestNG extends TestCase {
 
+    private TestResult result;
+
     @Test
     public void testTemplateMethod() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         TestCaseTest test = new TestCaseTest("testMethod");
         assertEquals("", test.log);
-        test.run(new TestResult());
+        test.run(result);
         assertEquals("setUp testMethod tearDown", test.log);
     }
 
     @Test
     public void testResult() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         TestCaseTest test = new TestCaseTest("testMethod");
-        TestResult result = new TestResult();
         test.run(result);
         assertEquals("1 run, 0 failed", result.summary());
     }
@@ -32,7 +33,6 @@ public class TestCaseTestNG extends TestCase {
     @Test
     public void testFailedResult() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         TestCaseTest test = new TestCaseTest("non-existing-method");
-        TestResult result = new TestResult();
         test.run(result);
         assertEquals("1 run, 1 failed", result.summary());
     }
@@ -42,7 +42,6 @@ public class TestCaseTestNG extends TestCase {
         TestSuite suite = new TestSuite();
         suite.add(new TestCaseTest("testMethod"));
         suite.add(new TestCaseTest("non-existing-method"));
-        TestResult result = new TestResult();
         suite.run(result);
         assertEquals("2 run, 1 failed", result.summary());
 
@@ -50,6 +49,7 @@ public class TestCaseTestNG extends TestCase {
 
     @Before
     public void setUp() {
+        result = new TestResult();
     }
 
     @After
