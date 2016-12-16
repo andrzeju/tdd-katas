@@ -35,6 +35,16 @@ public class TestCaseTest extends TestCase {
         assertEquals("1 run, 1 failed", result.summary());
     }
 
+    @Test
+    public void testSuite() {
+        TestSuite suite = new TestSuite();
+        suite.add(new WasRun("testMethod"));
+        suite.add(new WasRun("non-existing-method"));
+        TestResult result = suite.run();
+        assertEquals("2 run, 1 failed", result.summary());
+
+    }
+
     @Before
     public void setUp() {
     }
