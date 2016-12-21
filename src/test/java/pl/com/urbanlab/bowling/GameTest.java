@@ -29,15 +29,14 @@ public class GameTest {
         assertEquals(20, game.score());
     }
 
-//
-//    @Test
-//    public void testOneSpare() {
-//        game.roll(5);
-//        game.roll(5);
-//        game.roll(3);
-//        rollMany(17, 0);
-//        assertEquals(16, game.score());
-//    }
+    @Test
+    public void testOneSpare() {
+        game.roll(5);
+        game.roll(5);
+        game.roll(3);
+        rollMany(17, 0);
+        assertEquals(16, game.score());
+    }
 
 
     private void rollMany(int rolls, int pins) {
