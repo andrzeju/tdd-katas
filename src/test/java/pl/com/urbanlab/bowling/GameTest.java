@@ -37,6 +37,15 @@ public class GameTest {
         assertEquals(16, game.score());
     }
 
+    @Test
+    public void testOneStrike() {
+        game.roll(10);
+        game.roll(3);
+        game.roll(4);
+        rollMany(17, 0);
+        assertEquals(24, game.score());
+    }
+
     private void rollSpare() {
         game.roll(5);
         game.roll(5);
