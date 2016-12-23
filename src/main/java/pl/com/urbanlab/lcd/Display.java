@@ -12,7 +12,7 @@ public class Display {
     public Display() {
         digits.put(0, "._.\n|.|\n._.");
         digits.put(1, "...\n.|.\n.|.");
-        digits.put(2, ".-.\n._|\n._.");
+        digits.put(2, ".-.\n._|\n|_.");
         digits.put(3, "._.\n._|\n._|");
         digits.put(4, "...\n|_|\n..|");
         digits.put(5, "._.\n|_.\n._|");
@@ -23,6 +23,14 @@ public class Display {
     }
 
     public String lcdify(Integer num) {
-        return digits.get(num);
+        String digitString = "";
+        String [] numberDigits = num.toString().split("");
+        for (int i=0; i<numberDigits.length; i++) {
+            digitString+=digits.get(Integer.valueOf(numberDigits[i]));
+            if (i != numberDigits.length -1) {
+                digitString += "\n";
+            }
+        }
+        return digitString;
     }
 }

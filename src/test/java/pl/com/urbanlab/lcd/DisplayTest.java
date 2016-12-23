@@ -78,6 +78,13 @@ public class DisplayTest {
         assertEquals(nine(), result);
     }
 
+    @Test
+    public void testDoubleNumber() {
+        String result = dsp.lcdify(23);
+        System.out.print(result);
+    }
+
+
     private String four() {
         return "...\n|_|\n..|";
     }
@@ -110,7 +117,7 @@ public class DisplayTest {
     }
 
     private String two() {
-        return ".-.\n._|\n._.";
+        return ".-.\n._|\n|_.";
     }
 
     private String one() {
