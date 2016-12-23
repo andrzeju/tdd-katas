@@ -42,6 +42,69 @@ public class DisplayTest {
         assertEquals(three(), result);
     }
 
+    @Test
+    public void testFour() {
+        String result = dsp.lcdify(4);
+        assertEquals(four(), result);
+    }
+
+    @Test
+    public void testFive() {
+        String result = dsp.lcdify(5);
+        assertEquals(five(), result);
+    }
+
+    @Test
+    public void testSix() {
+        String result = dsp.lcdify(6);
+        assertEquals(six(), result);
+    }
+
+    @Test
+    public void testSeven() {
+        String result = dsp.lcdify(7);
+        assertEquals(seven(), result);
+    }
+
+    @Test
+    public void testEight() {
+        String result = dsp.lcdify(8);
+        assertEquals(eight(), result);
+    }
+
+    @Test
+    public void testNine() {
+        String result = dsp.lcdify(9);
+        assertEquals(nine(), result);
+    }
+
+    private String four() {
+        return "...\n|_|\n..|";
+    }
+
+
+    private String five() {
+        return "._.\n|_.\n._|";
+    }
+
+
+    private String six() {
+        return "._.\n|_.\n|_|";
+    }
+
+
+    private String seven() {
+        return "._.\n..|\n..|";
+    }
+
+    private String eight() {
+        return "._.\n|_|\n|_|";
+    }
+
+    private String nine() {
+        return "._.\n|_|\n|_.";
+    }
+
     private String three() {
         return "._.\n._|\n._|";
     }

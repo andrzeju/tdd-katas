@@ -10,22 +10,19 @@ public class Display {
     private Map<Integer, String> digits = new HashMap();
 
     public Display() {
-
+        digits.put(0, "._.\n|.|\n._.");
+        digits.put(1, "...\n.|.\n.|.");
+        digits.put(2, ".-.\n._|\n._.");
+        digits.put(3, "._.\n._|\n._|");
+        digits.put(4, "...\n|_|\n..|");
+        digits.put(5, "._.\n|_.\n._|");
+        digits.put(6, "._.\n|_.\n|_|");
+        digits.put(7, "._.\n..|\n..|");
+        digits.put(8, "._.\n|_|\n|_|");
+        digits.put(9, "._.\n|_|\n|_.");
     }
 
-    public String lcdify(int num) {
-
-        switch (num) {
-            case 0:
-                return "._.\n|.|\n._.";
-            case 1:
-                return "...\n.|.\n.|.";
-            case 2:
-                return ".-.\n._|\n._.";
-            case 3:
-                return "._.\n._|\n._|";
-            default:
-                return "";
-        }
+    public String lcdify(Integer num) {
+        return digits.get(num);
     }
 }
