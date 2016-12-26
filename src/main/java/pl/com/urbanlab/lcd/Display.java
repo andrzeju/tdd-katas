@@ -26,9 +26,23 @@ public class Display {
         String digitString = "";
         String [] numberDigits = num.toString().split("");
         for (int i=0; i<numberDigits.length; i++) {
-            digitString+=digits.get(Integer.valueOf(numberDigits[i]));
-            if (i != numberDigits.length -1) {
-                digitString += "\n";
+            digitString+=digits.get(Integer.valueOf(numberDigits[i]))[0];
+            if(i != numberDigits.length -1) {
+                digitString += " ";
+            }
+        }
+        digitString+="\n";
+        for (int i=0; i<numberDigits.length; i++) {
+            digitString+=digits.get(Integer.valueOf(numberDigits[i]))[1];
+            if(i != numberDigits.length -1) {
+                digitString += " ";
+            }
+        }
+        digitString+="\n";
+        for (int i=0; i<numberDigits.length; i++) {
+            digitString+=digits.get(Integer.valueOf(numberDigits[i]))[2];
+            if(i != numberDigits.length -1) {
+                digitString += " ";
             }
         }
         return digitString;

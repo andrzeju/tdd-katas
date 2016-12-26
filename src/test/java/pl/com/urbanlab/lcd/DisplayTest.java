@@ -81,7 +81,8 @@ public class DisplayTest {
     @Test
     public void testDoubleNumber() {
         String result = dsp.lcdify(23);
-        System.out.print(twentyThree());
+        System.out.println(twentyThree());
+        System.out.print(result);
         assertEquals(twentyThree(), result);
     }
 
