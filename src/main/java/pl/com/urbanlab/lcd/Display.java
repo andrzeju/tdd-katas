@@ -27,15 +27,21 @@ public class Display {
         String [] numberDigits = num.toString().split("");
         for (int i=0; i<numberDigits.length; i++) {
             String [] digitRepresenation = digits.get(Integer.valueOf(numberDigits[i]));
+
             digitString[0] += digitRepresenation[0];
             digitString[1] += digitRepresenation[1];
             digitString[2] += digitRepresenation[2];
-            if(i != numberDigits.length -1) {
-                digitString[0] += " ";
-                digitString[1] += " ";
-                digitString[2] += " ";
-            }
+
+            spaceBetweenDigits(digitString, numberDigits, i);
         }
         return digitString[0] + "\n" + digitString[1] + "\n" + digitString[2];
+    }
+
+    private void spaceBetweenDigits(String[] digitString, String[] numberDigits, int i) {
+        if(i != numberDigits.length -1) {
+            digitString[0] += " ";
+            digitString[1] += " ";
+            digitString[2] += " ";
+        }
     }
 }
