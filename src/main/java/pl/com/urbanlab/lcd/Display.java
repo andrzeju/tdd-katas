@@ -7,19 +7,19 @@ import java.util.Map;
  * Created by andrzej on 23.12.16.
  */
 public class Display {
-    private Map<Integer, String> digits = new HashMap();
+    private Map<Integer, String []> digits = new HashMap();
 
     public Display() {
-        digits.put(0, "._.\n|.|\n._.");
-        digits.put(1, "...\n.|.\n.|.");
-        digits.put(2, ".-.\n._|\n|_.");
-        digits.put(3, "._.\n._|\n._|");
-        digits.put(4, "...\n|_|\n..|");
-        digits.put(5, "._.\n|_.\n._|");
-        digits.put(6, "._.\n|_.\n|_|");
-        digits.put(7, "._.\n..|\n..|");
-        digits.put(8, "._.\n|_|\n|_|");
-        digits.put(9, "._.\n|_|\n|_.");
+        digits.put(0, new String[] {"._.", "|.|", "._."});
+        digits.put(1, new String[] {"...", ".|.", ".|."});
+        digits.put(2, new String[] {".-.", "._|", "|_."});
+        digits.put(3, new String[] {"._.", "._|", "._|"});
+        digits.put(4, new String[] {"...", "|_|", "..|"});
+        digits.put(5, new String[] {"._.", "|_.", "._|"});
+        digits.put(6, new String[] {"._.", "|_.", "|_|"});
+        digits.put(7, new String[] {"._.", "..|", "..|"});
+        digits.put(8, new String[] {"._.", "|_|", "|_|"});
+        digits.put(9, new String[] {"._.", "|_|", "|_."});
     }
 
     public String lcdify(Integer num) {
