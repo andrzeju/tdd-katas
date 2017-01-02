@@ -49,4 +49,15 @@ public class BookDiscountsTest {
         assertEquals(18, cart.price());
     }
 
+    @Test
+    public void testDiscountOn3SameBooksAndOneDifferent() {
+        Book catch22 = new Book("Catch 22", 10);
+        Book meinKampf = new Book("Mein Kampf", 7);
+        Discount threeBooksDiscount = new ThreeBooksDiscount();
+        cart.addDiscount(threeBooksDiscount);
+        cart.add(catch22, 3);
+        cart.add(meinKampf, 1);
+        assertEquals(31, cart.price());
+    }
+
 }
