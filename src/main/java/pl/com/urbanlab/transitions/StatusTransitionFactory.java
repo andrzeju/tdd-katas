@@ -10,26 +10,51 @@ public class StatusTransitionFactory {
 
         switch (lastNode) {
             case NEW:
-                if (nextNode == Status.FINISHED) {
-                    transition = new NewFinishedTranstion();
-                } else {
-                    transition = new StartedTranstion();
-                }
+                transition = handleNewNode(nextNode);
                 break;
             case STARTED:
-                if (nextNode == Status.FINISHED) {
-                    transition = new FinishedStartedTranstion();
-                } else {
-                    transition = new PausedStartedTranstion();
-                }
+                transition = handleStartedNode(nextNode);
                 break;
             case NONE :
                 transition = new CreateTransition();
+                break;
+            case FINISHED:
+                transition = handleFinishedNode(nextNode);
                 break;
             default:
                 throw new Exception("Transition not implemented");
         }
 
+        return transition;
+    }
+
+    private Transition handleFinishedNode(Status nextNode) {
+        Transition transition;
+        if (nextNode == Status.PAUSED) {
+            transition = new PausedFinishedTranstion();
+        } else {
+            transition = new ReopenedTranstion();
+        }
+        return transition;
+    }
+
+    private Transition handleStartedNode(Status nextNode) {
+        Transition transition;
+        if (nextNode == Status.FINISHED) {
+            transition = new FinishedStartedTranstion();
+        } else {
+            transition = new PausedStartedTranstion();
+        }
+        return transition;
+    }
+
+    private Transition handleNewNode(Status nextNode) {
+        Transition transition;
+        if (nextNode == Status.FINISHED) {
+            transition = new NewFinishedTranstion();
+        } else {
+            transition = new StartedTranstion();
+        }
         return transition;
     }
 

@@ -34,6 +34,12 @@ public class StatusTransitionFactoryTest {
         assertTrue(stf.getTransition(Status.STARTED, Status.FINISHED) instanceof FinishedStartedTranstion);
     }
 
+    @Test
+    public void testFinishedTransitions() throws Exception {
+        assertTrue(stf.getTransition(Status.FINISHED, Status.REOPEN) instanceof ReopenedTranstion);
+        assertTrue(stf.getTransition(Status.FINISHED, Status.PAUSED) instanceof PausedFinishedTranstion);
+    }
+
 //    @Test(expected = Exception.class)
 //    public void testNotAllowedTransition() throws Exception {
 //        assertTrue(stf.getTransition(Status.FINISHED, Status.FINISHED) instanceof PausedStartedTranstion);
