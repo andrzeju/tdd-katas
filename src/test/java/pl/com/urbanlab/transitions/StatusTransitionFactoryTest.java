@@ -28,4 +28,9 @@ public class StatusTransitionFactoryTest {
         assertTrue(stf.getTransition(Status.NEW, Status.FINISHED) instanceof NewFinishedTranstion);
     }
 
+    @Test
+    public void testStartedTransitions() {
+        assertTrue(stf.getTransition(Status.STARTED, Status.PAUSED) instanceof PausedStartedTranstion);
+        assertTrue(stf.getTransition(Status.STARTED, Status.FINISHED) instanceof FinishedStartedTranstion);
+    }
 }
