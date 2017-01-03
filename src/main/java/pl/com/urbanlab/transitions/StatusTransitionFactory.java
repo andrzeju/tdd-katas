@@ -1,12 +1,22 @@
 package pl.com.urbanlab.transitions;
 
+import pl.com.urbanlab.transitions.types.*;
+
 /**
  * Created by andrzej on 03.01.17.
  */
 public class StatusTransitionFactory {
 
-    Transition getTransition(Status lastNode, Status nextNode) throws Exception {
+    Transition getTransition(Status lastNode, Status nextNode, boolean ownerChanged) throws Exception {
         Transition transition;
+
+        if (ownerChanged) {
+            return new ForwardTranstion();
+        }
+
+        if (lastNode == nextNode) {
+            return new EditTranstion();
+        }
 
         switch (lastNode) {
             case NEW:
