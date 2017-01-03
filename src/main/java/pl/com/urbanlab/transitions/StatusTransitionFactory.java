@@ -5,23 +5,31 @@ package pl.com.urbanlab.transitions;
  */
 public class StatusTransitionFactory {
 
-    Transition getTransition(Status lastNode, Status nextNode) {
+    Transition getTransition(Status lastNode, Status nextNode) throws Exception {
         Transition transition;
-        if (lastNode == Status.NEW) {
-            if (nextNode == Status.FINISHED) {
-                transition = new NewFinishedTranstion();
-            } else {
-                transition = new StartedTranstion();
-            }
-        } else if (lastNode == Status.STARTED) {
-            if (nextNode == Status.FINISHED) {
-                transition = new FinishedStartedTranstion();
-            } else {
-                transition = new PausedStartedTranstion();
-            }
-        } else {
-            transition = new CreateTransition();
+
+        switch (lastNode) {
+            case NEW:
+                if (nextNode == Status.FINISHED) {
+                    transition = new NewFinishedTranstion();
+                } else {
+                    transition = new StartedTranstion();
+                }
+                break;
+            case STARTED:
+                if (nextNode == Status.FINISHED) {
+                    transition = new FinishedStartedTranstion();
+                } else {
+                    transition = new PausedStartedTranstion();
+                }
+                break;
+            case NONE :
+                transition = new CreateTransition();
+                break;
+            default:
+                throw new Exception("Transition not implemented");
         }
+
         return transition;
     }
 

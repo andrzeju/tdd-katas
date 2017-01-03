@@ -18,19 +18,25 @@ public class StatusTransitionFactoryTest {
     }
 
     @Test
-    public void testCreateTask() {
-        assertTrue(stf.getTransition(null, Status.NEW) instanceof CreateTransition);
+    public void testCreateTask() throws Exception {
+        assertTrue(stf.getTransition(Status.NONE, Status.NEW) instanceof CreateTransition);
     }
 
     @Test
-    public void testNewTransitions() {
+    public void testNewTransitions() throws Exception {
         assertTrue(stf.getTransition(Status.NEW, Status.STARTED) instanceof StartedTranstion);
         assertTrue(stf.getTransition(Status.NEW, Status.FINISHED) instanceof NewFinishedTranstion);
     }
 
     @Test
-    public void testStartedTransitions() {
+    public void testStartedTransitions() throws Exception {
         assertTrue(stf.getTransition(Status.STARTED, Status.PAUSED) instanceof PausedStartedTranstion);
         assertTrue(stf.getTransition(Status.STARTED, Status.FINISHED) instanceof FinishedStartedTranstion);
     }
+
+//    @Test(expected = Exception.class)
+//    public void testNotAllowedTransition() throws Exception {
+//        assertTrue(stf.getTransition(Status.FINISHED, Status.FINISHED) instanceof PausedStartedTranstion);
+//    }
+
 }
